@@ -1,5 +1,7 @@
 package com.vanilla.crud.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +50,14 @@ public class Controller {
 		});
 	}
 
-	@DeleteMapping("/products/{id}")
+	@DeleteMapping(path = "/products/{id}")
 	public void deleteEmployee(@PathVariable Long id) {
 		productRepository.deleteById(id);
+	}
+
+	@PostMapping(path = "/listofproducts")
+	public List<Product> createProducts(@Valid @RequestBody List<Product> listOfProducts) {
+		return productRepository.saveAll(listOfProducts);
 	}
 
 }
