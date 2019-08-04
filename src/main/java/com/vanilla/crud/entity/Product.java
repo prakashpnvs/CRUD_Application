@@ -14,16 +14,16 @@ import javax.validation.constraints.Size;
 public class Product {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "product_id")
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name = "product_id", unique = true, nullable = false)
 	private Long productId;
 	@Column(name = "product_type")
 	@NotNull(message = "Product Type required")
-	@Size(min = 1, max = 100, message = "Product Type cannot exceed 100 characters")
+	@Size(min = 1, max = 50, message = "Product Type should be atleast 1 character to a maximum of 50 characters")
 	private String productType;
 	@Column(name = "product_name")
 	@NotNull(message = "Product Name required")
-	@Size(min = 1, max = 100, message = "Product Name cannot exceed 100 characters")
+	@Size(min = 1, max = 50, message = "Product Name should be atleast 1 character to a maximum of 50 characters")
 	private String productName;
 
 	public Product() {
