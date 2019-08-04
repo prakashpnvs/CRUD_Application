@@ -34,12 +34,13 @@ public class Controller {
 	}
 
 	@GetMapping(path = "/products/{id}")
-	public Product readProductbyId(@PathVariable Long id) {
+	public Product retrieveProductbyId(@PathVariable Long id) {
 		return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
 	}
 
 	@PutMapping(path = "/products/{id}")
 	public Product updateProduct(@RequestBody Product newProduct, @PathVariable Long id) {
+		retrieveProductbyId(id);
 		return productRepository.findById(id).map(product -> {
 			product.setProductType(newProduct.getProductType());
 			product.setProductName(newProduct.getProductName());
@@ -52,12 +53,18 @@ public class Controller {
 
 	@DeleteMapping(path = "/products/{id}")
 	public void deleteEmployee(@PathVariable Long id) {
+		retrieveProductbyId(id);
 		productRepository.deleteById(id);
 	}
-
+	
 	@PostMapping(path = "/listofproducts")
-	public List<Product> createProducts(@Valid @RequestBody List<Product> listOfProducts) {
+	public List<Product> createListOfProducts(@Valid @RequestBody List<Product> listOfProducts) {
 		return productRepository.saveAll(listOfProducts);
+	}
+	
+	@GetMapping(path = "/allproducts")
+	public List<Product> retrieveListOfProducts() {
+		return productRepository.findAll();
 	}
 
 }
