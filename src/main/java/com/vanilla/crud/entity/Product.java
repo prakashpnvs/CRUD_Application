@@ -9,21 +9,28 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="products")
+@ApiModel(description = "Product details")
 public class Product {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id", unique = true, nullable = false)
+	@ApiModelProperty(notes = "Product Id. Database generated")
 	private Long productId;
 	@Column(name = "product_type")
 	@NotNull(message = "Product Type required")
 	@Size(min = 1, max = 50, message = "Product Type should be atleast 1 character to a maximum of 50 characters")
+	@ApiModelProperty(notes = "Type of the product")
 	private String productType;
 	@Column(name = "product_name")
 	@NotNull(message = "Product Name required")
 	@Size(min = 1, max = 50, message = "Product Name should be atleast 1 character to a maximum of 50 characters")
+	@ApiModelProperty(notes = "Name of the product")
 	private String productName;
 
 	public Product() {
