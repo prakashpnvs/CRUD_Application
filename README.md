@@ -1,5 +1,6 @@
 # CRUD_Application
-This application is a prototype of a Product Managemt System that performs the four basic functions of persistent storage(CREATE, READ, UPDATE &amp; DELETE).
+This application is a prototype of a Product Managemt System that performs the four basic functions of persistent storage(CREATE, READ, UPDATE &amp; DELETE). \
+Some additional features such as documenting APIs through **Swagger** and **Caching** for enhanced application performance are also included.
 
 Following are the technologies used \
   a.) Java 8 \
@@ -27,3 +28,5 @@ Access the [Swagger UI](http://localhost:8080/swagger-ui.html) using the link ht
 
 ![Swagger UI screenshot](https://user-images.githubusercontent.com/15331235/62424767-6317ba00-b6a1-11e9-9cb5-879524dc8ab7.png)
 
+## Caching
+You'll notice the time taken to fetch the "GET response" from localhost:8080/api/v1/products is greatly reduced in the subsequent requests after the first response. (**tested using Postman**)
