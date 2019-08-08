@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +38,7 @@ public class Controller {
 			@ApiResponse(code = 403, message = "Aceess forbidden"),
 			@ApiResponse(code = 404, message = "Resource not found") })
 	@GetMapping(path = "/products")
+	@Cacheable
 	public List<Product> retrieveListOfProducts() {
 		return productRepository.findAll();
 	}
@@ -48,6 +50,7 @@ public class Controller {
 	}
 
 	@ApiOperation(value = "View a product by Id")
+	@Cacheable
 	@GetMapping(path = "/products/{id}")
 	public Product retrieveProductbyId(@PathVariable Long id) {
 		return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
