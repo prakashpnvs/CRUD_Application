@@ -1,5 +1,5 @@
 # CRUD_Application
-This application is a prototype of a Product Managemt System that performs the four basic functions of persistent storage(CREATE, READ, UPDATE &amp; DELETE). \
+This application is a prototype of a Product Management System that performs the four basic functions of persistent storage(CREATE, READ, UPDATE &amp; DELETE). \
 Some additional features such as documenting APIs through **Swagger** and **Caching** for enhanced application performance are also included.
 
 Following are the technologies used \
